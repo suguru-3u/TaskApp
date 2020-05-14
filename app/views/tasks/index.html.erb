@@ -1,0 +1,33 @@
+<h2>Task登録フォーム</h2>
+<%= form_with(model:@task,url: tasks_path) do |f| %>
+    <div class="form-group">
+        <%= f.label :name, 'タイトル' %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :body, 'Task内容' %>
+        <%= f.text_field :body, class: 'form-control' %>
+    </div>
+    <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+<% end %>
+
+<h2>Task一覧</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>タイトル</th><th>本文</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |tasks| %>
+    <tr>
+      <td>
+        <%= tasks.name %>
+      </td>
+      <td>
+        <%= tasks.body %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
