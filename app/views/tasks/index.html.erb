@@ -1,4 +1,22 @@
+<%= notice %>
+
 <h2>Task登録フォーム</h2>
+
+<%# エラーメッセージ %>
+<% if @task.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+      The form contains <%= pluralize(@task.errors.count, "error") %>.
+    </div>
+    <ul>
+    <% @task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%# 投稿フォーム %>
 <%= form_with(model:@task,url: tasks_path) do |f| %>
     <div class="form-group">
         <%= f.label :name, 'タイトル' %>
@@ -11,6 +29,13 @@
     <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
 <% end %>
 
+<%# Task詳細数 %>
+<h2>Task数</h2>
+<p>
+  現在抱えているTask数は<%= @tasks.count %>個です。
+</p>
+
+<!-- Task一覧 -->
 <h2>Task一覧</h2>
 <table class="table">
   <thead>

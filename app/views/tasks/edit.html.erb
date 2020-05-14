@@ -1,2 +1,13 @@
-<h1>Tasks#edit</h1>
-<p>Find me in app/views/tasks/edit.html.erb</p>
+<%# 編集フォーム %>
+<h2>Task編集フォーム</h2>
+<%= form_with(model:@task,url: tasks_path) do |f| %>
+    <div class="form-group">
+        <%= f.label :name, 'タイトル' %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= f.label :body, 'Task内容' %>
+        <%= f.text_field :body, class: 'form-control' %>
+    </div>
+    <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+<% end %>
