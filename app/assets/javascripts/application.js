@@ -17,3 +17,25 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+// 設計図
+// times = document.getElementById('time')
+//
+// if (times > today){
+//
+// }
+
+var now = new Date();
+ function displayMonth() {
+   var now, months, month, year;
+
+   now = new Date();
+   //var christmas = new Date(2016, 11, 25);
+   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+   month = now.getMonth();
+   year = now.getFullYear();
+   document.getElementsByClassName('DateTimeDisp').textContent = months[month] + ' ' + year;
+ }
+ displayMonth();
+
+// 実際の処理

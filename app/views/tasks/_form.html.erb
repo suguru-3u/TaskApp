@@ -8,5 +8,8 @@
         <%= f.label :body, 'Task内容' %>
         <%= f.text_field :body, class: 'form-control' %>
     </div>
+    <label class="control-label">Task完了日</label>
+    <%= f.date_select :end_date, {}%>
+
     <%= f.submit text, class: 'btn btn-info btn-block' %>
 <% end %>

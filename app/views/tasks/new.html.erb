@@ -1,10 +1,15 @@
-<%# Task詳細数 %>
-<h2>Task数</h2>
-<p>
-  現在抱えているTask数は<%= @tasks.count %>個です。
-</p>
+<%# 投稿フォームページ %>
 
-<!-- Task一覧 -->
+<%= notice %>
+
+<h2>Task登録フォーム</h2>
+
+<%# エラーメッセージがあった場合に表示させる %>
+<%= render partial: 'layouts/errors', locals: { task: @task } %>
+
+<%# 投稿フォーム %>
+<%= render partial: 'form', locals: { task: @task, text: '登録',path: tasks_path } %>
+
 <h2>Task一覧</h2>
 <table class="table">
   <thead>
