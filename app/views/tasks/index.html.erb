@@ -2,32 +2,11 @@
 
 <h2>Task登録フォーム</h2>
 
-<%# エラーメッセージ %>
-<% if @task.errors.any? %>
-  <div id="error_explanation">
-    <div class="alert alert-danger">
-      The form contains <%= pluralize(@task.errors.count, "error") %>.
-    </div>
-    <ul>
-    <% @task.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<%# エラーメッセージがあった場合に表示させる %>
+<%= render partial: 'layouts/errors', locals: { task: @task } %>
 
 <%# 投稿フォーム %>
-<%= form_with(model:@task,url: tasks_path) do |f| %>
-    <div class="form-group">
-        <%= f.label :name, 'タイトル' %>
-        <%= f.text_field :name, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-        <%= f.label :body, 'Task内容' %>
-        <%= f.text_field :body, class: 'form-control' %>
-    </div>
-    <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
-<% end %>
+<%= render partial: 'form', locals: { task: @task, text: '編集',path: tasks_path } %>
 
 <%# Task詳細数 %>
 <h2>Task数</h2>
@@ -40,7 +19,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>タイトル</th><th>本文</th>
+      <th>タイトル</th><th>本文</th><th></th>
     </tr>
   </thead>
   <tbody>
@@ -51,6 +30,9 @@
       </td>
       <td>
         <%= tasks.body %>
+      </td>
+      <td>
+        <%= link_to '詳細',edit_task_path(tasks),class: 'btn btn-success' %>
       </td>
     </tr>
     <% end %>
