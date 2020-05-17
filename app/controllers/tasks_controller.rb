@@ -6,11 +6,13 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = Task.all
+    @user = current_user
+    @tasks = @user.tasks
   end
 
   def create
     @task = Task.new(task_params)
+    @task.user_id = current_user.id
     if @task.save
      redirect_to new_task_path
    else
