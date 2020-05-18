@@ -6,8 +6,8 @@ class TasksController < ApplicationController
   end
 
   def index
-    @user = current_user
-    @tasks = @user.tasks
+    @today = Date.today
+    @tasks = Task.all
   end
 
   def create

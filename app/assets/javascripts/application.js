@@ -26,16 +26,7 @@
 // }
 
 var now = new Date();
- function displayMonth() {
-   var now, months, month, year;
-
-   now = new Date();
-   //var christmas = new Date(2016, 11, 25);
-   months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-   month = now.getMonth();
-   year = now.getFullYear();
-   document.getElementsByClassName('DateTimeDisp').textContent = months[month] + ' ' + year;
- }
- displayMonth();
+var timee = document.getElementById('times')
+timee.textContent = now.toLocaleString();
 
 // 実際の処理
