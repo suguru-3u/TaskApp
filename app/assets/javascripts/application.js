@@ -18,15 +18,21 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-// 設計図
-// times = document.getElementById('time')
-//
-// if (times > today){
-//
-// }
+// 処理の設計図
+// taskscountのidを取得, countのidを取得
 
-var now = new Date();
-var timee = document.getElementById('times')
-timee.textContent = now.toLocaleString();
 
-// 実際の処理
+// 数が０個なら緑の背景、数が０個以上なら青の背景、数が０個以上なら赤の背景
+function NumberOfTasks () {
+  var taskscount = document.getElementById('taskscount').innerHTML;
+  var count = document.getElementById('count');
+  console.log('onload');
+  console.log(taskscount);
+  console.log(count);
+  if (taskscount <= 0){
+    count.classList.add('bg-info');
+  }else{
+    count.classList.remove('bg-info');
+  }
+}
+// 処理の実行エリア

@@ -1,12 +1,13 @@
 class TasksController < ApplicationController
+before_action :set_project, only: [:edit, :update, :destroy]
 
   def new
+    @today = Date.today
     @task = Task.new
     @tasks = Task.last(3)
   end
 
   def index
-    @today = Date.today
     @tasks = Task.all
   end
 
@@ -22,11 +23,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @task = Task.find(params[:id])
   end
 
   def update
-  	@task = Task.find(params[:id])
   	if @task.update(task_params)
   		redirect_to edit_task_path(@task), notice: "successfully updated task!"
   	else
@@ -35,7 +34,6 @@ class TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(params[:id])
     @task.destroy
     redirect_to tasks_path, notice: "successfully delete task!"
   end
@@ -43,6 +41,10 @@ class TasksController < ApplicationController
   private
   def task_params
     params.require(:task).permit(:name,:body,:end_date)
+  end
+
+  def set_project
+  @task = Task.find(params[:id])
   end
 
 end

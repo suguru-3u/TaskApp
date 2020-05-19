@@ -1,11 +1,12 @@
 <%# Task詳細数 %>
-<p class="text-center pt-4 h2">
-  現在の時刻:<%= @today %>
-</p>
+
 <h2>Task数</h2>
-<p>
-  現在抱えているTask数は<%= @tasks.count %>個です。
-</p>
+
+<div id = "count">
+  <p>
+    現在抱えているTask数は<span id = 'taskscount'><%= @tasks.count %></span>個です。
+  </p>
+</div>
 
 <!-- Task一覧 -->
 <h2>Task一覧</h2>
@@ -45,3 +46,6 @@
     <% end %>
   </tbody>
 </table>
+<script>
+  NumberOfTasks();
+</script>
