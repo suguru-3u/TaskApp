@@ -4,11 +4,13 @@ before_action :set_project, only: [:edit, :update, :destroy]
   def new
     @today = Date.today
     @task = Task.new
-    @tasks = Task.last(3)
+    @user = current_user
+    @tasks = @user.tasks.last(3)
   end
 
   def index
-    @tasks = Task.all
+    @user = current_user
+    @tasks = @user.tasks
   end
 
   def create
@@ -27,7 +29,7 @@ before_action :set_project, only: [:edit, :update, :destroy]
 
   def update
   	if @task.update(task_params)
-  		redirect_to edit_task_path(@task), notice: "successfully updated task!"
+  		redirect_to tasks_path, notice: "successfully updated task!"
   	else
   		render :edit
   	end

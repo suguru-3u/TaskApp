@@ -29,7 +29,7 @@ function NumberOfTasks () {
   console.log('onload');
   console.log(taskscount);
   console.log(count);
-  if (taskscount <= 0){
+  if (taskscount > 0){
     count.classList.add('bg-info');
   }else{
     count.classList.remove('bg-info');

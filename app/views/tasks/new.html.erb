@@ -1,7 +1,5 @@
 <%# 投稿フォームページ %>
 
-<%= notice %>
-
 <p class="text-center pt-4 h2">
   現在の時刻:<%= @today %>
 </p>
@@ -14,7 +12,7 @@
 <%# 投稿フォーム %>
 <%= render partial: 'form', locals: { task: @task, text: '登録',path: tasks_path } %>
 
-<h2>Task一覧</h2>
+<h2 class='mt-5'>直近の登録Task3件</h2>
 <table class="table">
   <thead>
     <tr>

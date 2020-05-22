@@ -1,0 +1,29 @@
+<%# ユーザー情報編集ページ %>
+
+<h2 class='text-center mt-3'>User edit</h2>
+<%= render partial: 'layouts/errors', locals: { task: @user } %>
+
+<%= form_for @user do |f| %>
+    <div class="form-group">
+        <%= f.label :name, '名前' %>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+
+
+    <div class="field">
+    	<%= f.label :introduction %>
+    	<%= f.text_area :introduction, class: 'form-control' %>
+    </div>
+
+    <div class="field mt-3 mb-3">
+      <%= f.label :image %>
+      <%= f.attachment_field :profile_image, class: "user_image" %>
+    </div>
+
+    <div class="form-group">
+        <%= f.label :email, 'email' %>
+        <%= f.text_field :email, class: 'form-control' %>
+    </div>
+
+    <%= f.submit '編集する', class: 'btn btn-info ' %>
+<% end %>
