@@ -1,14 +1,94 @@
-<div class="row">
-  <div class="col-xs-3">
-    <h2>メンバー</h2>
-  </div>
-  <div class="col-xs-9">
-    <div>
-      <h2>Project作成</h2>
-      
+<h2 class='text-center mt-3 mb-3'>チーム名：<%= @group.name %></h2>
+<div class="row justify-content-between">
+  <div class='col-xs-4'>
+    <div class="card Team-card">
+      <div class="card-body">
+        <h2 class='card-title'>TeamTask登録</h2>
+        <p class='card-text'>
+          <%= form_for(@project, url: group_projects_path(@group)) do |f| %>
+          <div class="form-group">
+            <%= f.label :name, 'Task名' %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :body, 'Task詳細' %>
+            <%= f.text_field :body, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :responsible, 'Task担当者' %>
+            <%= f.text_field :responsible, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Task完了日</label>
+            <%= f.date_select :end_date, {}%>
+          </div>
+        </p>
+        <%= f.submit '投稿', class: 'btn btn-info btn-block' %>
+        <% end %>
+      </div>
     </div>
-    <div>
-      <h2>Project一覧</h2>
+  </div>
+  <div class="col-xs-4">
+    <div class="card Team-card">
+      <div class="card-body">
+        <h2 class='card-title'>参加メンバー</h2>
+        <ul class='card-text'>
+          <% @users.each do |users| %>
+          <li><%= users.name %></li>
+          <% end %>
+        </ul>
+        <%= link_to 'Team編集',edit_group_path(@group),class: 'btn btn-success btn-block' %>
+      </div>
     </div>
   </div>
+  <div class="col-xs-4 ">
+    <div class="card Team-card">
+      <div class="card-body">
+        <h2 class='card-title'>現在のTask状態</h2>
+        <ul class='card-text'>
+          <li>抱えているTask数<%= @projects.count %>。</li>
+          <li>Task完了日が過ぎているTask0。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-5">
+  <h2 class='text-center'>Task一覧</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Task名</th>
+        <th>Task詳細</th>
+        <th>Task担当者</th>
+        <th>Task完了日</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |projects| %>
+      <tr>
+        <td>
+          <%= projects.name %>
+        </td>
+        <td>
+          <%= projects.body %>
+        </td>
+        <td>
+          <%= projects.responsible %>
+        </td>
+        <td>
+          <%= projects.end_date %>
+        </td>
+        <td>
+          <%= link_to '詳細',group_project_path(@group,projects),class: 'btn btn-success' %>
+        </td>
+        <td>
+          <%= link_to '削除',group_project_path(@group.id,projects.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"},class: 'btn btn-danger' %>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

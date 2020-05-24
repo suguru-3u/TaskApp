@@ -23,16 +23,16 @@
 
 
 // 数が０個なら緑の背景、数が０個以上なら青の背景、数が０個以上なら赤の背景
-function NumberOfTasks () {
-  var taskscount = document.getElementById('taskscount').innerHTML;
-  var count = document.getElementById('count');
-  console.log('onload');
-  console.log(taskscount);
-  console.log(count);
-  if (taskscount > 0){
-    count.classList.add('bg-info');
-  }else{
-    count.classList.remove('bg-info');
-  }
-}
+// function NumberOfTasks () {
+//   var taskscount = document.getElementById('taskscount').innerHTML;
+//   var count = document.getElementById('count');
+//   console.log('onload');
+//   console.log(taskscount);
+//   console.log(count);
+//   if (taskscount > 0){
+//     count.classList.add('bg-info');
+//   }else{
+//     count.classList.remove('bg-info');
+//   }
+// }
 // 処理の実行エリア

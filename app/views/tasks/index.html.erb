@@ -1,16 +1,8 @@
 <%# Task詳細数 %>
 <%= notice %>
 
-<h2>Task数</h2>
-
-<div id = "count">
-  <p>
-    現在抱えているTask数は<span id = 'taskscount'><%= @tasks.count %></span>個です。
-  </p>
-</div>
-
 <!-- Task一覧 -->
-<h2>Task一覧</h2>
+<h2 class='text-center mt-4 mb-4' >Task一覧</h2>
 <table class="table">
   <thead>
     <tr>
@@ -48,5 +40,5 @@
   </tbody>
 </table>
 <script>
-  NumberOfTasks();
+  <%# NumberOfTasks(); %>
 </script>

@@ -6,14 +6,10 @@ class GroupsController < ApplicationController
     @groups = @user.groups
   end
 
-  def index
-    @user = current_user
-    @group = @user.groups
-  end
-
   def show
     @group = Group.find(params[:id])
-    @user = @group.users
+    @users = @group.users
+    @projects = @group.projects
     @project = Project.new
   end
 
@@ -25,6 +21,26 @@ class GroupsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @group = Group.find(params[:id])
+  end
+
+  def update
+    @group = Group.find(params[:id])
+    if @group.update(group_params)
+  		redirect_to new_group_path
+  	else
+  		render :edit
+  	end
+  end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    redirect_to new_group_path, notice: "successfully delete task!"
+  end
+
 
   private
   def group_params
