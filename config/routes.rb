@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'homes#top'
-  get 'homes/about'
+  
   get 'mypages/index'
   resources :tasks, only: [:new,:index,:create,:edit,:update,:destroy]
   resources :users, only: [:index,:edit,:update,:destroy]
